@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A232A04B2286203B003F3D13 /* WordSearchWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A04A2286203B003F3D13 /* WordSearchWireframe.swift */; };
+		A232A04D22862088003F3D13 /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A04C22862088003F3D13 /* WordSearchViewController.swift */; };
+		A232A04F228620C3003F3D13 /* WordSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A04E228620C3003F3D13 /* WordSearchPresenter.swift */; };
+		A232A05322862133003F3D13 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A05222862133003F3D13 /* BoardModel.swift */; };
+		A232A056228622E7003F3D13 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A055228622E7003F3D13 /* AppRouter.swift */; };
+		A232A05922862400003F3D13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A232A058228623FF003F3D13 /* UIKit.framework */; };
+		A232A05B22862539003F3D13 /* WordSearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */; };
+		A232A05D22862A23003F3D13 /* WordSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */; };
+		A232A0622286D399003F3D13 /* WordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A0612286D399003F3D13 /* WordSearchViewModel.swift */; };
 		A2E9AD7122861A65002EF60F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9AD7022861A65002EF60F /* AppDelegate.swift */; };
-		A2E9AD7322861A65002EF60F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9AD7222861A65002EF60F /* ViewController.swift */; };
-		A2E9AD7622861A65002EF60F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E9AD7422861A65002EF60F /* Main.storyboard */; };
 		A2E9AD7822861A67002EF60F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E9AD7722861A67002EF60F /* Assets.xcassets */; };
 		A2E9AD7B22861A67002EF60F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E9AD7922861A67002EF60F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A232A04A2286203B003F3D13 /* WordSearchWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchWireframe.swift; sourceTree = "<group>"; };
+		A232A04C22862088003F3D13 /* WordSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
+		A232A04E228620C3003F3D13 /* WordSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchPresenter.swift; sourceTree = "<group>"; };
+		A232A05222862133003F3D13 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		A232A055228622E7003F3D13 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		A232A058228623FF003F3D13 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordSearchStoryboard.storyboard; sourceTree = "<group>"; };
+		A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		A232A0612286D399003F3D13 /* WordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordSearchViewModel.swift; path = "Shopify Challenge/Presentation/WordSearchScreen/Presenter/WordSearchViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		A2E9AD6D22861A65002EF60F /* Shopify Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E9AD7022861A65002EF60F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A2E9AD7222861A65002EF60F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A2E9AD7522861A65002EF60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2E9AD7722861A67002EF60F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2E9AD7A22861A67002EF60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2E9AD7C22861A67002EF60F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,17 +43,105 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A232A05922862400003F3D13 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A232A04522861F2F003F3D13 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A232A04622861F4A003F3D13 /* WordSearchScreen */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A232A04622861F4A003F3D13 /* WordSearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A232A0602286D250003F3D13 /* Wireframe */,
+				A232A05F2286D220003F3D13 /* Presenter */,
+				A232A05E2286D20E003F3D13 /* Models */,
+				A232A04822861F9A003F3D13 /* View */,
+			);
+			path = WordSearchScreen;
+			sourceTree = "<group>";
+		};
+		A232A04822861F9A003F3D13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A232A04C22862088003F3D13 /* WordSearchViewController.swift */,
+				A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */,
+				A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A232A05022862108003F3D13 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A232A05122862114003F3D13 /* Models */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A232A05122862114003F3D13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A232A05222862133003F3D13 /* BoardModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A232A05422862207003F3D13 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9AD7022861A65002EF60F /* AppDelegate.swift */,
+				A232A055228622E7003F3D13 /* AppRouter.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A232A057228623FF003F3D13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A232A058228623FF003F3D13 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A232A05E2286D20E003F3D13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A232A0612286D399003F3D13 /* WordSearchViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A232A05F2286D220003F3D13 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A232A04E228620C3003F3D13 /* WordSearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A232A0602286D250003F3D13 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				A232A04A2286203B003F3D13 /* WordSearchWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		A2E9AD6422861A65002EF60F = {
 			isa = PBXGroup;
 			children = (
 				A2E9AD6F22861A65002EF60F /* Shopify Challenge */,
 				A2E9AD6E22861A65002EF60F /* Products */,
+				A232A057228623FF003F3D13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +156,9 @@
 		A2E9AD6F22861A65002EF60F /* Shopify Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				A2E9AD7022861A65002EF60F /* AppDelegate.swift */,
-				A2E9AD7222861A65002EF60F /* ViewController.swift */,
-				A2E9AD7422861A65002EF60F /* Main.storyboard */,
+				A232A05422862207003F3D13 /* Application */,
+				A232A04522861F2F003F3D13 /* Presentation */,
+				A232A05022862108003F3D13 /* Domain */,
 				A2E9AD7722861A67002EF60F /* Assets.xcassets */,
 				A2E9AD7922861A67002EF60F /* LaunchScreen.storyboard */,
 				A2E9AD7C22861A67002EF60F /* Info.plist */,
@@ -123,8 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E9AD7B22861A67002EF60F /* LaunchScreen.storyboard in Resources */,
+				A232A05B22862539003F3D13 /* WordSearchStoryboard.storyboard in Resources */,
 				A2E9AD7822861A67002EF60F /* Assets.xcassets in Resources */,
-				A2E9AD7622861A65002EF60F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +237,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2E9AD7322861A65002EF60F /* ViewController.swift in Sources */,
+				A232A05322862133003F3D13 /* BoardModel.swift in Sources */,
+				A232A04F228620C3003F3D13 /* WordSearchPresenter.swift in Sources */,
 				A2E9AD7122861A65002EF60F /* AppDelegate.swift in Sources */,
+				A232A0622286D399003F3D13 /* WordSearchViewModel.swift in Sources */,
+				A232A056228622E7003F3D13 /* AppRouter.swift in Sources */,
+				A232A04D22862088003F3D13 /* WordSearchViewController.swift in Sources */,
+				A232A05D22862A23003F3D13 /* WordSearchCollectionViewCell.swift in Sources */,
+				A232A04B2286203B003F3D13 /* WordSearchWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A2E9AD7422861A65002EF60F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2E9AD7522861A65002EF60F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A2E9AD7922861A67002EF60F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
