@@ -14,9 +14,10 @@
 		A232A056228622E7003F3D13 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A055228622E7003F3D13 /* AppRouter.swift */; };
 		A232A05922862400003F3D13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A232A058228623FF003F3D13 /* UIKit.framework */; };
 		A232A05B22862539003F3D13 /* WordSearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */; };
-		A232A05D22862A23003F3D13 /* WordSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */; };
+		A232A05D22862A23003F3D13 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A05C22862A23003F3D13 /* BoardCollectionViewCell.swift */; };
 		A232A0622286D399003F3D13 /* WordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A0612286D399003F3D13 /* WordSearchViewModel.swift */; };
 		A232A0692288AB55003F3D13 /* Character+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A0682288AB55003F3D13 /* Character+Extensions.swift */; };
+		A232A06B2288C13C003F3D13 /* WordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A232A06A2288C13C003F3D13 /* WordCollectionViewCell.swift */; };
 		A2E9AD7122861A65002EF60F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9AD7022861A65002EF60F /* AppDelegate.swift */; };
 		A2E9AD7822861A67002EF60F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E9AD7722861A67002EF60F /* Assets.xcassets */; };
 		A2E9AD7B22861A67002EF60F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E9AD7922861A67002EF60F /* LaunchScreen.storyboard */; };
@@ -30,9 +31,10 @@
 		A232A055228622E7003F3D13 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		A232A058228623FF003F3D13 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordSearchStoryboard.storyboard; sourceTree = "<group>"; };
-		A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		A232A05C22862A23003F3D13 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A232A0612286D399003F3D13 /* WordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordSearchViewModel.swift; path = "Shopify Challenge/Presentation/WordSearchScreen/Presenter/WordSearchViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		A232A0682288AB55003F3D13 /* Character+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extensions.swift"; sourceTree = "<group>"; };
+		A232A06A2288C13C003F3D13 /* WordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2E9AD6D22861A65002EF60F /* Shopify Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E9AD7022861A65002EF60F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E9AD7722861A67002EF60F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 			children = (
 				A232A04C22862088003F3D13 /* WordSearchViewController.swift */,
 				A232A05A22862539003F3D13 /* WordSearchStoryboard.storyboard */,
-				A232A05C22862A23003F3D13 /* WordSearchCollectionViewCell.swift */,
+				A232A06C2288C1E4003F3D13 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +146,15 @@
 				A232A0682288AB55003F3D13 /* Character+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A232A06C2288C1E4003F3D13 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A232A05C22862A23003F3D13 /* BoardCollectionViewCell.swift */,
+				A232A06A2288C13C003F3D13 /* WordCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A2E9AD6422861A65002EF60F = {
@@ -254,8 +265,9 @@
 				A232A0692288AB55003F3D13 /* Character+Extensions.swift in Sources */,
 				A232A0622286D399003F3D13 /* WordSearchViewModel.swift in Sources */,
 				A232A056228622E7003F3D13 /* AppRouter.swift in Sources */,
+				A232A06B2288C13C003F3D13 /* WordCollectionViewCell.swift in Sources */,
 				A232A04D22862088003F3D13 /* WordSearchViewController.swift in Sources */,
-				A232A05D22862A23003F3D13 /* WordSearchCollectionViewCell.swift in Sources */,
+				A232A05D22862A23003F3D13 /* BoardCollectionViewCell.swift in Sources */,
 				A232A04B2286203B003F3D13 /* WordSearchWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

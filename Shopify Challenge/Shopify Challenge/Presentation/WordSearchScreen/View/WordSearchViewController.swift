@@ -20,9 +20,11 @@ class WordSearchViewController: UIViewController {
     @IBOutlet weak var boardCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var boardCollectionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var boardCollectionView: UICollectionView!
-    
+    @IBOutlet weak var wordsCollectionView: UICollectionView!
+    @IBOutlet weak var counterLabel: UILabel! { didSet { counterLabel.text = nil } }
+
     var delegate: WordSearchViewControllerDelegate?
-    fileprivate var viewModel = WordSearchViewModel(letters: [[]], boardSize: 0)
+    fileprivate var viewModel = WordSearchViewModel(letters: [[]], boardSize: 0, words: [])
     private var selectedWord: String = ""
     fileprivate var maxCollectionViewWidth: CGFloat = 0.0
 
@@ -35,6 +37,9 @@ class WordSearchViewController: UIViewController {
         boardCollectionView.delegate = self
         boardCollectionView.dataSource = self
 
+        wordsCollectionView.delegate = self
+        wordsCollectionView.dataSource = self
+
         maxCollectionViewWidth = UIScreen.main.bounds.width
         boardCollectionViewHeight.constant = maxCollectionViewWidth
         boardCollectionViewWidth.constant = maxCollectionViewWidth
@@ -45,6 +50,7 @@ class WordSearchViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         boardCollectionView.reloadData()
+        wordsCollectionView.reloadData()
     }
 
     // MARK: Actions
@@ -69,28 +75,40 @@ class WordSearchViewController: UIViewController {
     func updateView(withViewModel model: WordSearchViewModel) {
         viewModel = model
         boardCollectionView.reloadData()
+        wordsCollectionView.reloadData()
     }
 
-    func saveSelection() {
+    func saveSelection(forWord word: String) {
         for c in boardCollectionView.subviews {
-            if let cell = c as? WordSearchCollectionViewCell,
+            if let cell = c as? BoardCollectionViewCell,
                 cell.state == .selected {
                 cell.setState(to: .found)
+            }
+        }
+        for c in wordsCollectionView.subviews {
+            if let cell = c as? WordCollectionViewCell,
+                let w = cell.wordLabel.text,
+                w == word {
+                cell.setFound()
             }
         }
     }
 
     func removeSelection() {
         for c in boardCollectionView.subviews {
-            if let cell = c as? WordSearchCollectionViewCell,
+            if let cell = c as? BoardCollectionViewCell,
                 cell.state == .selected {
                 cell.setState(to: .unselected)
             }
         }
     }
 
+    func updateCounter(toCount count: String) {
+        counterLabel.text = count
+    }
+
     private func trySetSelectedState(forIndexPath indexPath: IndexPath) {
-        if let cell = boardCollectionView.cellForItem(at: indexPath) as? WordSearchCollectionViewCell,
+        if let cell = boardCollectionView.cellForItem(at: indexPath) as? BoardCollectionViewCell,
             let letter = cell.getLetter() {
             cell.setState(to: .selected)
             selectedWord += letter
@@ -118,18 +136,23 @@ class WordSearchViewController: UIViewController {
 extension WordSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.boardSize
+        return collectionView == boardCollectionView ? viewModel.boardSize : 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.boardSize
+        return collectionView == boardCollectionView ? viewModel.boardSize : viewModel.words.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordSearchCollectionViewCell.cellId, for: indexPath) as? WordSearchCollectionViewCell else { return UICollectionViewCell() }
-
-        cell.fill(withLetter: viewModel.getLetter(forIndexPath: indexPath))
-        return cell
+        if collectionView == boardCollectionView,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCollectionViewCell.cellId, for: indexPath) as? BoardCollectionViewCell {
+            cell.fill(withLetter: viewModel.getLetter(forIndexPath: indexPath))
+            return cell
+        }
+        else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCollectionViewCell.cellId, for: indexPath) as? WordCollectionViewCell {
+            cell.fill(withWord: viewModel.getWord(forIndexPath: indexPath))
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
 
@@ -137,12 +160,13 @@ extension WordSearchViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension WordSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width / CGFloat(viewModel.boardSize)
-        return CGSize(width: width, height: width)
+        let width: CGFloat = collectionView.bounds.width / ( collectionView == boardCollectionView ? CGFloat(viewModel.boardSize) : 2.0 )
+        let height: CGFloat = collectionView == boardCollectionView ? width : 20.0
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return collectionView == boardCollectionView ? 0.0 : 15.0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
