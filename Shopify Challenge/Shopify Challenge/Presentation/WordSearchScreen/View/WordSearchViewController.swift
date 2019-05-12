@@ -48,11 +48,6 @@ class WordSearchViewController: UIViewController {
         boardCollectionView.addGestureRecognizer(gestureRecognizer)
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        boardCollectionView.reloadData()
-        wordsCollectionView.reloadData()
-    }
-
     // MARK: Actions
     
     @IBAction func didPressStartNew(_ sender: Any) {
