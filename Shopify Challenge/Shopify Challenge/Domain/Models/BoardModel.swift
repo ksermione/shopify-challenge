@@ -10,9 +10,11 @@ import Foundation
 
 struct BoardModel {
     var letters: [[Character?]]
+    var boardSize: Int
 
-    init(letters: [[Character?]]) {
+    init(letters: [[Character?]], boardSize: Int) {
         self.letters = letters
+        self.boardSize = boardSize
     }
 }
 
@@ -30,25 +32,26 @@ extension BoardModel {
         }
 
         words.forEach({ w in
-            let word = w.uppercased()
-            let maxStart = (boardSize - word.count)
+            if w.count <= boardSize {
+                let word = w.uppercased()
+                let maxStart = (boardSize - word.count)
 
-            var positionX = maxStart > 0 ? Int.random(in: 0..<(maxStart)) : 0
-            var positionY = Int.random(in: 0..<(boardSize))
+                var positionX = maxStart > 0 ? Int.random(in: 0..<(maxStart)) : 0
+                var positionY = Int.random(in: 0..<(boardSize))
 
-            while !canPlaceHorizontally(word: word, positionX: positionX, positionY: positionY, letters: letters) {
-                positionX = maxStart > 0 ? Int.random(in: 0..<(maxStart)) : 0
-                positionY = Int.random(in: 0..<(boardSize))
+                while !canPlaceHorizontally(word: word, positionX: positionX, positionY: positionY, letters: letters) {
+                    positionX = maxStart > 0 ? Int.random(in: 0..<(maxStart)) : 0
+                    positionY = Int.random(in: 0..<(boardSize))
+                }
+
+                // place horizontally
+                word.forEach({ char in
+                    letters[positionY][positionX] = char
+                    positionX += 1
+                })
             }
-
-            // place horizontally
-            word.forEach({ char in
-                letters[positionY][positionX] = char
-                positionX += 1
-            })
-
         })
-        return BoardModel(letters: letters)
+        return BoardModel(letters: letters, boardSize: boardSize)
     }
 
     static private func canPlaceHorizontally(word: String, positionX: Int, positionY: Int, letters: [[Character?]]) -> Bool {

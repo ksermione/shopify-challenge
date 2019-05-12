@@ -12,65 +12,49 @@ import UIKit
 protocol WordSearchViewControllerDelegate {
     func viewDidLoad()
     func didSelectWord(_ word: String)
+    func didPressStartNew()
 }
 
 class WordSearchViewController: UIViewController {
 
-    @IBOutlet weak var collectionViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    @IBOutlet var collectionView: UICollectionView!
-
+    @IBOutlet weak var boardCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var boardCollectionViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var boardCollectionView: UICollectionView!
+    
     var delegate: WordSearchViewControllerDelegate?
     fileprivate var viewModel = WordSearchViewModel(letters: [[]], boardSize: 0)
     private var selectedWord: String = ""
-
     fileprivate var maxCollectionViewWidth: CGFloat = 0.0
+
+    // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.viewDidLoad()
 
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        boardCollectionView.delegate = self
+        boardCollectionView.dataSource = self
 
         maxCollectionViewWidth = UIScreen.main.bounds.width
-        collectionViewHeight.constant = maxCollectionViewWidth
-        collectionViewWidth.constant = maxCollectionViewWidth
+        boardCollectionViewHeight.constant = maxCollectionViewWidth
+        boardCollectionViewWidth.constant = maxCollectionViewWidth
 
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        collectionView.addGestureRecognizer(gestureRecognizer)
+        boardCollectionView.addGestureRecognizer(gestureRecognizer)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView.reloadData()
+        boardCollectionView.reloadData()
     }
 
-    func updateView(withViewModel model: WordSearchViewModel) {
-        viewModel = model
-        collectionView.reloadData()
-    }
-
-    func saveSelection() {
-        for c in collectionView.subviews {
-            if let cell = c as? WordSearchCollectionViewCell,
-                cell.state == .selected {
-                cell.setState(to: .found)
-            }
-        }
-    }
-
-    func removeSelection() {
-        for c in collectionView.subviews {
-            if let cell = c as? WordSearchCollectionViewCell,
-                cell.state == .selected {
-                cell.setState(to: .unselected)
-            }
-        }
+    // MARK: Actions
+    
+    @IBAction func didPressStartNew(_ sender: Any) {
+        delegate?.didPressStartNew()
     }
 
     @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
-        let st = gestureRecognizer.state
-        let currentLocation = gestureRecognizer.location(in: collectionView)
+        let currentLocation = gestureRecognizer.location(in: boardCollectionView)
         let section = getRow(y: currentLocation.y)
         let item = getColumn(x: currentLocation.x)
         let currentIndexPath = IndexPath(item: item, section: section)
@@ -81,9 +65,32 @@ class WordSearchViewController: UIViewController {
             didSelectWord()
         }
     }
+    
+    func updateView(withViewModel model: WordSearchViewModel) {
+        viewModel = model
+        boardCollectionView.reloadData()
+    }
+
+    func saveSelection() {
+        for c in boardCollectionView.subviews {
+            if let cell = c as? WordSearchCollectionViewCell,
+                cell.state == .selected {
+                cell.setState(to: .found)
+            }
+        }
+    }
+
+    func removeSelection() {
+        for c in boardCollectionView.subviews {
+            if let cell = c as? WordSearchCollectionViewCell,
+                cell.state == .selected {
+                cell.setState(to: .unselected)
+            }
+        }
+    }
 
     private func trySetSelectedState(forIndexPath indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? WordSearchCollectionViewCell,
+        if let cell = boardCollectionView.cellForItem(at: indexPath) as? WordSearchCollectionViewCell,
             let letter = cell.getLetter() {
             cell.setState(to: .selected)
             selectedWord += letter
@@ -91,13 +98,13 @@ class WordSearchViewController: UIViewController {
     }
 
     private func getRow(y: CGFloat) -> Int {
-        let cellHeight = collectionView.bounds.height / CGFloat(viewModel.boardSize)
+        let cellHeight = boardCollectionView.bounds.height / CGFloat(viewModel.boardSize)
         let rrr = Int((y / cellHeight).rounded(.down))
         return rrr
     }
 
     private func getColumn(x: CGFloat) -> Int {
-        let cellWidth = collectionView.bounds.width / CGFloat(viewModel.boardSize)
+        let cellWidth = boardCollectionView.bounds.width / CGFloat(viewModel.boardSize)
         let rrr = Int((x / cellWidth).rounded(.down))
         return rrr
     }

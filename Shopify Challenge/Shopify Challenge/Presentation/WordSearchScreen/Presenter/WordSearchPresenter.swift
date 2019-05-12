@@ -16,7 +16,7 @@ class WordSearchPresenter {
 
     func updateView() {
         let model = BoardModel.create(withWords: words, boardSize: 10)
-        let vm = WordSearchViewModel(letters: model.letters, boardSize: 10)
+        let vm = WordSearchViewModel(letters: model.letters, boardSize: model.boardSize)
 
         viewController?.updateView(withViewModel: vm)
     }
@@ -35,5 +35,9 @@ extension WordSearchPresenter: WordSearchViewControllerDelegate {
             }
         })
         viewController?.removeSelection()
+    }
+
+    func didPressStartNew() {
+        updateView()
     }
 }
